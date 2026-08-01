@@ -10,6 +10,14 @@ export function ContactForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.email || !formData.message) return;
+
+    // Open user's email client pre-filled to send directly to adityagermany186@gmail.com
+    const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name || 'Visitor'}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nSender Email: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    window.location.href = `mailto:adityagermany186@gmail.com?subject=${subject}&body=${body}`;
+
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 5000);
     setFormData({ name: '', email: '', message: '' });
@@ -66,7 +74,7 @@ export function ContactForm() {
         {submitted ? (
           <>
             <CheckCircle2 className="w-4 h-4 text-[#EFE9E1]" />
-            <span>Message Sent Successfully</span>
+            <span>Opening Email Client...</span>
           </>
         ) : (
           <>
