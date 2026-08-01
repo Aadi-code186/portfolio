@@ -50,88 +50,12 @@ const fadeInUp = {
 
 export default function Home() {
   const handleDownloadResume = () => {
-    const resumeText = `====================================================
-ADITYA PARASHER — SOFTWARE ENGINEER & AI BUILDER
-====================================================
-Location: Berlin, Germany
-Email: ${PORTFOLIO_DATA.contact.email}
-GitHub: ${PORTFOLIO_DATA.contact.github}
-LinkedIn: ${PORTFOLIO_DATA.contact.linkedin}
-
-----------------------------------------------------
-HERO SUMMARY
-----------------------------------------------------
-Software Engineering Student | Full-Stack Developer | AI Builder
-
-I design and build modern web applications, AI-powered tools, and automation software using TypeScript, Python, React, Next.js, and cloud technologies. Currently based in Berlin and actively looking for a part-time Software Engineering position.
-
-----------------------------------------------------
-EDUCATION
-----------------------------------------------------
-University of Europe for Applied Sciences — Berlin, Germany
-B.Sc. Software Engineering (2026 — Present)
-Focus Areas: Software Engineering, Cloud Computing, Artificial Intelligence, Machine Learning, Distributed Systems, Data Analytics
-
-----------------------------------------------------
-WORK & EXPERIENCE
-----------------------------------------------------
-SimpleGerman — Berlin, Germany
-Co-Founder • Full-Stack Engineer (2026 — Present)
-Building an AI-powered language learning platform.
-• Architected a full-stack application using Next.js, TypeScript, Supabase and PostgreSQL.
-• Developed interactive learning flows with real-time progress tracking.
-• Designed a scalable content engine for lessons, quizzes and story mode.
-• Leading frontend, backend, database design and user experience.
-
-----------------------------------------------------
-SKILLS
-----------------------------------------------------
-Frontend: Next.js, React, TypeScript, Tailwind CSS, HTML, CSS, JavaScript
-Backend: Python, Flask, Django, REST APIs, SQL, PostgreSQL
-AI & Data: Gemini API, Scikit-learn, Pandas, Machine Learning
-Tools: Git, GitHub, Docker, GitLab, Selenium, Vercel
-
-----------------------------------------------------
-FEATURED PROJECTS
-----------------------------------------------------
-1. SimpleGerman
-   An AI-powered language learning platform featuring structured lessons, story mode, quizzes, and real-time learning progress.
-   Tech: Next.js, TypeScript, Supabase, PostgreSQL, Tailwind CSS, Gemini API
-
-2. AI WhatsApp Chatbot
-   Python automation tool that extracts messages, detects new conversations, timestamps chats, and automates WhatsApp Web workflows using Selenium.
-   Tech: Python, Selenium, Gemini API, Automation, REST APIs
-
-3. Website Time Tracker
-   A browser extension that tracks website usage, visualizes browsing habits, and helps users reduce distractions through real-time analytics.
-   Tech: JavaScript, TypeScript, HTML/CSS, Chrome Extension API, Chart.js
-
-4. Vani AI Assistant
-   A Python-based desktop assistant integrating Gemini AI, weather APIs, and news services to automate everyday tasks through natural language commands.
-   Tech: Python, Gemini API, SpeechRecognition, REST APIs
-
-5. AI Habit Tracker
-   An intelligent habit tracking application using machine learning and Gemini AI to generate personalized recommendations and predictive habit analytics.
-   Tech: React, Python, Scikit-learn, Pandas, Gemini API
-
-----------------------------------------------------
-CERTIFICATIONS
-----------------------------------------------------
-• Harvard CS50x
-• Harvard CS50P
-• Cyfrin Blockchain Basics
-• TestAS
-`;
-
-    const blob = new Blob([resumeText], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Aditya_Parasher_CV.txt';
+    link.href = '/resume.tex';
+    link.download = 'Aditya_Software_Engineer_Resume.tex';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    URL.revokeObjectURL(url);
   };
 
   return (
