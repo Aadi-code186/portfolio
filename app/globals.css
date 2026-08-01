@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-jetbrains-mono: 'JetBrains Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #EFE9E1;
+  color: #322D29;
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Editorial Selection */
+::selection {
+  background-color: #72383D;
+  color: #EFE9E1;
+}
+
+/* Minimal Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #EFE9E1;
+}
+::-webkit-scrollbar-thumb {
+  background: #AC9C8D;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #72383D;
+}
+
+/* ---------------- PREMIUM EDITORIAL LUXURY UTILITIES ---------------- */
+.luxury-card {
+  background: #D1C7BD;
+  border: 1px solid rgba(50, 45, 41, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+}
+
+.luxury-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(50, 45, 41, 0.12);
+  border-color: rgba(114, 56, 61, 0.3);
+}
+
+.btn-primary {
+  background-color: #322D29;
+  color: #EFE9E1;
+  border-radius: 16px;
+  font-weight: 500;
+  transition: background-color 250ms ease, transform 200ms ease, box-shadow 250ms ease;
+}
+.btn-primary:hover {
+  background-color: #72383D;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(114, 56, 61, 0.25);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid #322D29;
+  color: #322D29;
+  border-radius: 16px;
+  font-weight: 500;
+  transition: background-color 250ms ease, border-color 250ms ease, color 250ms ease, transform 200ms ease;
+}
+.btn-secondary:hover {
+  background-color: rgba(114, 56, 61, 0.06);
+  border-color: #72383D;
+  color: #72383D;
+  transform: translateY(-2px);
+}
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+.nav-glass {
+  background-color: rgba(239, 233, 225, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(172, 156, 141, 0.3);
+}
