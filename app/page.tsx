@@ -399,46 +399,60 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
-              className="lg:col-span-7 luxury-card p-8 sm:p-10 space-y-6"
+              className="lg:col-span-7 luxury-card p-8 sm:p-10 space-y-8"
             >
-              <div className="flex items-center gap-3 border-b border-[#AC9C8D]/30 pb-4">
-                <div className="p-3 bg-[#EFE9E1] rounded-2xl border border-[#AC9C8D]/40 text-[#72383D]">
-                  <GraduationCap className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="text-xs font-mono text-[#72383D] font-semibold">
-                    {PORTFOLIO_DATA.education.period}
+              {(Array.isArray(PORTFOLIO_DATA.education)
+                ? PORTFOLIO_DATA.education
+                : [PORTFOLIO_DATA.education]
+              ).map((edu, index) => (
+                <div
+                  key={index}
+                  className={`space-y-4 ${
+                    index > 0 ? "pt-6 border-t border-[#AC9C8D]/30" : ""
+                  }`}
+                >
+                  <div className="flex items-center gap-3 pb-2">
+                    <div className="p-3 bg-[#EFE9E1] rounded-2xl border border-[#AC9C8D]/40 text-[#72383D]">
+                      <GraduationCap className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-mono text-[#72383D] font-semibold">
+                        {edu.period}
+                      </div>
+                      <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[#322D29]">
+                        {edu.institution}
+                      </h3>
+                    </div>
                   </div>
-                  <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-[#322D29]">
-                    {PORTFOLIO_DATA.education.institution}
-                  </h3>
-                </div>
-              </div>
 
-              <div>
-                <div className="font-serif text-xl font-semibold text-[#72383D]">
-                  {PORTFOLIO_DATA.education.degree}
-                </div>
-                <div className="text-xs font-mono text-[#322D29]/60 mt-1">
-                  📍 {PORTFOLIO_DATA.education.location}
-                </div>
-              </div>
+                  <div>
+                    <div className="font-serif text-xl font-semibold text-[#72383D]">
+                      {edu.degree}
+                    </div>
+                    <div className="text-xs font-mono text-[#322D29]/60 mt-1">
+                      📍 {edu.location}
+                    </div>
+                  </div>
 
-              <div className="space-y-3 pt-2">
-                <div className="text-xs font-mono text-[#322D29]/60 uppercase tracking-widest font-semibold">
-                  Focus Areas
+                  {edu.focusAreas && edu.focusAreas.length > 0 && (
+                    <div className="space-y-2 pt-1">
+                      <div className="text-xs font-mono text-[#322D29]/60 uppercase tracking-widest font-semibold">
+                        Focus Areas
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {edu.focusAreas.map((area) => (
+                          <span
+                            key={area}
+                            className="px-3.5 py-1.5 bg-[#EFE9E1] border border-[#AC9C8D]/40 text-[#322D29] text-xs font-mono rounded-xl font-medium"
+                          >
+                            {area}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {PORTFOLIO_DATA.education.focusAreas.map((area) => (
-                    <span
-                      key={area}
-                      className="px-3.5 py-1.5 bg-[#EFE9E1] border border-[#AC9C8D]/40 text-[#322D29] text-xs font-mono rounded-xl font-medium"
-                    >
-                      {area}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              ))}
             </motion.div>
 
             {/* Certifications Card */}
