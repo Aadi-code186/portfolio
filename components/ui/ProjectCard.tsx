@@ -76,7 +76,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <a
             href={project.liveUrl}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            aria-label={`View live project: ${project.title}`}
             className="btn-primary flex-1 py-3 px-4 text-xs font-medium uppercase tracking-wider flex items-center justify-center gap-2"
           >
             <span>Live Project</span>
@@ -85,7 +86,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <a
             href={project.githubUrl}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            aria-label={`View source code for ${project.title}`}
             className="btn-secondary px-4 py-3 text-xs font-medium flex items-center justify-center gap-1.5"
           >
             <Github className="w-3.5 h-3.5 text-[#322D29]" />

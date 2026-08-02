@@ -58,8 +58,41 @@ export default function Home() {
     document.body.removeChild(link);
   };
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Aditya Parasher',
+    jobTitle: 'Software Engineer & Full-Stack Developer',
+    url: 'https://github.com/Aadi-code186',
+    sameAs: [
+      PORTFOLIO_DATA.contact.github,
+      PORTFOLIO_DATA.contact.linkedin,
+    ],
+    worksFor: {
+      '@type': 'Organization',
+      name: 'SimpleGerman',
+    },
+    alumniOf: {
+      '@type': 'EducationalOrganization',
+      name: 'University of Europe for Applied Sciences',
+    },
+    knowsAbout: [
+      'Software Engineering',
+      'TypeScript',
+      'Python',
+      'Next.js',
+      'React',
+      'AI & Machine Learning',
+      'PostgreSQL',
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-[#EFE9E1] text-[#322D29] relative overflow-hidden font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Start-to-End Full Page Animated Wave Background */}
       <div className="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-40">
         <Waves
@@ -537,7 +570,8 @@ export default function Home() {
                   <a
                     href={PORTFOLIO_DATA.contact.github}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub Profile"
                     className="flex-1 flex items-center justify-center gap-2 p-3.5 luxury-card text-xs font-semibold text-[#322D29] hover:text-[#72383D]"
                   >
                     <Github className="w-4 h-4" />
@@ -546,7 +580,8 @@ export default function Home() {
                   <a
                     href={PORTFOLIO_DATA.contact.linkedin}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn Profile"
                     className="flex-1 flex items-center justify-center gap-2 p-3.5 luxury-card text-xs font-semibold text-[#322D29] hover:text-[#72383D]"
                   >
                     <Linkedin className="w-4 h-4" />

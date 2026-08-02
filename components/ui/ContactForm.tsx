@@ -11,7 +11,11 @@ export function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.email || !formData.message) return;
+    const trimmedName = formData.name.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedMessage = formData.message.trim();
+
+    if (!trimmedEmail || !trimmedMessage) return;
 
     setLoading(true);
     setError('');
@@ -25,11 +29,11 @@ export function ContactForm() {
         },
         body: JSON.stringify({
           access_key: '6685e430-50d5-4cca-bd31-d3aabbbb103b',
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          subject: `Portfolio Inquiry from ${formData.name}`,
-          from_name: formData.name,
+          name: trimmedName,
+          email: trimmedEmail,
+          message: trimmedMessage,
+          subject: `Portfolio Inquiry from ${trimmedName || 'Visitor'}`,
+          from_name: trimmedName || 'Portfolio Visitor',
         }),
       });
 
@@ -51,13 +55,17 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4" noValidate={false}>
       <div>
-        <label className="block text-xs font-mono uppercase tracking-wider text-[#322D29]/70 mb-2 font-semibold">
+        <label htmlFor="contact-name" className="block text-xs font-mono uppercase tracking-wider text-[#322D29]/70 mb-2 font-semibold">
           Your Name
         </label>
         <input
+          id="contact-name"
           type="text"
+          name="name"
+          autoComplete="name"
+          maxLength={100}
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           placeholder="e.g. Alex Miller"
@@ -67,11 +75,15 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-xs font-mono uppercase tracking-wider text-[#322D29]/70 mb-2 font-semibold">
+        <label htmlFor="contact-email" className="block text-xs font-mono uppercase tracking-wider text-[#322D29]/70 mb-2 font-semibold">
           Email Address
         </label>
         <input
+          id="contact-email"
           type="email"
+          name="email"
+          autoComplete="email"
+          maxLength={254}
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           placeholder="alex@company.com"
@@ -81,11 +93,14 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-xs font-mono uppercase tracking-wider text-[#322D29]/70 mb-2 font-semibold">
+        <label htmlFor="contact-message" className="block text-xs font-mono uppercase tracking-wider text-[#322D29]/70 mb-2 font-semibold">
           Project Details / Inquiry
         </label>
         <textarea
+          id="contact-message"
+          name="message"
           rows={4}
+          maxLength={5000}
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           placeholder="Tell me about your software project, role opportunity, or ideas..."
@@ -95,7 +110,7 @@ export function ContactForm() {
       </div>
 
       {error && (
-        <div className="flex items-center gap-2 text-xs font-mono text-red-600 bg-red-50 border border-red-200 p-3 rounded-xl">
+        <div role="alert" className="flex items-center gap-2 text-xs font-mono text-red-600 bg-red-50 border border-red-200 p-3 rounded-xl">
           <AlertCircle className="w-4 h-4 shrink-0" />
           <span>{error}</span>
         </div>

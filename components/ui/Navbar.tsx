@@ -36,13 +36,14 @@ export function Navbar() {
           {/* Brand Logo */}
           <a
             href="#"
+            aria-label="Aditya Portfolio Home"
             className="font-serif text-2xl font-semibold text-[#322D29] tracking-tight hover:text-[#72383D] transition-colors"
           >
             Aditya<span className="text-[#72383D]">.</span>
           </a>
 
           {/* Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-[#322D29]/80">
+          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-8 text-sm font-medium text-[#322D29]/80">
             {navLinks.map((link) => (
               <a
                 key={link.label}

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://adityaparasher.dev'),
   title: "Aditya — Software Engineering Student • Full-Stack Developer • AI Builder",
   description:
     "Portfolio of Aditya, a Software Engineering student at the University of Europe for Applied Sciences in Berlin and Co-Founder of SimpleGerman. Specializing in Next.js, TypeScript, Python, and AI automation tools.",
@@ -16,6 +17,9 @@ export const metadata: Metadata = {
     "Python Automation",
   ],
   authors: [{ name: "Aditya Parasher" }],
+  alternates: {
+    canonical: 'https://github.com/Aadi-code186',
+  },
   openGraph: {
     title: "Aditya — Software Engineering Student • Full-Stack Developer • AI Builder",
     description:
@@ -44,9 +48,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className="bg-[#EAEFF5] text-slate-800 antialiased selection:bg-indigo-600 selection:text-white">
         {children}
       </body>
     </html>
   );
 }
+
