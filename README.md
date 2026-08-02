@@ -63,6 +63,6 @@ A modern, high-performance, responsive developer portfolio showcasing my work as
 
 ## 📄 License & Copyright
 
-Copyright (c) 2026 Aditya Parashar. All rights reserved.
+Copyright (c) 2026 Aditya. All rights reserved.
 
 No part of this repository may be copied, modified, distributed, or used in any form without the express written permission of the copyright holder. See [`LICENSE`](./LICENSE) for details.
