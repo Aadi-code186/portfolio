@@ -51,8 +51,8 @@ const fadeInUp = {
 export default function Home() {
   const handleDownloadResume = () => {
     const link = document.createElement('a');
-    link.href = '/resume.pdf';
-    link.download = 'Aditya_Software_Engineer_Resume.pdf';
+    link.href = '/Aditya_Resume.pdf';
+    link.download = 'Aditya_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
