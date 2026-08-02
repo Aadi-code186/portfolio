@@ -1,0 +1,182 @@
+\documentclass[a4paper,10pt]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[top=0.7cm, bottom=0.7cm, left=0.8cm, right=0.8cm]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fontawesome5}
+
+% Hyperlink & Color styling
+\definecolor{linkcolor}{RGB}{37, 99, 235}
+\definecolor{primary}{RGB}{15, 23, 42}
+\definecolor{accent}{RGB}{30, 41, 59}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkcolor,
+    filecolor=linkcolor,      
+    urlcolor=linkcolor,
+    pdftitle={Aditya - Software Engineer Resume},
+    pdfauthor={Aditya}
+}
+
+% Page setup
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0pt}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{2pt}\color{primary}\bfseries\large\raggedright
+}{}{0em}{}[\color{primary}\titlerule \vspace{3pt}]
+
+% Custom commands for bulleted lists and subheadings
+\newcommand{\resumeItem}[1]{
+  \item\small{#1 \vspace{-1.5pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textit{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeProjectHeading}[3]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} \quad |\quad \textit{\small #2} & \textit{\small #3} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-3pt}}
+
+\begin{document}
+
+% ==========================================
+% HEADER
+% ==========================================
+\begin{center}
+    \vspace{-8pt}
+    {\Huge \bfseries \color{primary} Aditya} \\[3pt]
+    \small \color{accent} Software Engineer \quad | \quad AI \& Full-Stack Developer \quad | \quad Berlin, Germany \\[3pt]
+    \small 
+    \faGlobe\ \href{https://aditya-portfolio-se.vercel.app/}{aditya-portfolio-se.vercel.app} \quad $\cdot$ \quad
+    \faEnvelope\ \href{mailto:adityagermany186@gmail.com}{adityagermany186@gmail.com} \quad $\cdot$ \quad
+    \faPhone\ \href{tel:+4915210762319}{+49 15210762319} \\[2pt]
+    \small
+    \faLinkedin\ \href{https://www.linkedin.com/in/aditya-parasher/}{linkedin.com/in/aditya-parasher} \quad $\cdot$ \quad
+    \faGithub\ \href{https://github.com/Aadi-code186}{github.com/Aadi-code186}
+    \vspace{-6pt}
+\end{center}
+
+% ==========================================
+% PROFESSIONAL SUMMARY
+% ==========================================
+\section*{PROFESSIONAL SUMMARY}
+\small{
+Full-Stack \& AI Engineer based in Berlin specializing in \textbf{Python}, \textbf{TypeScript}, \textbf{React}, \textbf{Next.js}, and \textbf{PostgreSQL}. Experienced in engineering production web applications, automated Selenium workflows, and LLM API integrations. Strong foundation in software architecture, database design, and clean code; seeking a \textbf{Working Student Software Engineer} position.
+}
+
+% ==========================================
+% TECHNICAL SKILLS
+% ==========================================
+\section*{TECHNICAL SKILLS}
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \item \small{
+    \textbf{Languages:} Python, TypeScript, JavaScript, SQL, C++, HTML5, CSS3 \\
+    \textbf{Frontend:} Next.js, React, Tailwind CSS, Zustand, Context API, HTML/CSS \\
+    \textbf{Backend \& Databases:} PostgreSQL, Supabase, Flask, Django, RESTful APIs, Relational Schema Design \\
+    \textbf{AI / ML:} Google Gemini API, Scikit-learn, Pandas, NLP Processing, Predictive Data Pipelines \\
+    \textbf{Developer Tools \& Cloud:} Git, GitHub, Docker, GitLab, Selenium WebDriver, Chrome Extension API, Vercel
+  }
+\end{itemize}
+
+% ==========================================
+% WORK EXPERIENCE
+% ==========================================
+\section*{WORK EXPERIENCE}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Co-Founder \& Full-Stack Engineer}{Apr 2026 -- Present}
+    {SimpleGerman}{Berlin, Germany (Remote)}
+    \resumeItemListStart
+      \resumeItem{Architected and deployed an AI-driven language learning web platform using \textbf{Next.js}, \textbf{TypeScript}, \textbf{Supabase}, and \textbf{PostgreSQL}.}
+      \resumeItem{Designed a flexible content engine enabling structured grammar modules, story modes, and dynamic quiz generation.}
+      \resumeItem{Built real-time learning flows with client-side state management to track progress and deliver instant user feedback.}
+      \resumeItem{Engineered PostgreSQL database schemas and serverless API routes for user session management and data persistence.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+% ==========================================
+% PROJECTS
+% ==========================================
+\section*{PROJECTS}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {AI WhatsApp Chatbot Automation \normalfont{\href{https://github.com/Aadi-code186/AI-whatsapp-chatbot}{\color{linkcolor}[GitHub]}}}{Python, Selenium, Gemini API}{Jan 2025 -- Feb 2025}
+    \resumeItemListStart
+      \resumeItem{Developed a Python automation framework using Selenium WebDriver to programmatically inspect DOM state and extract WhatsApp Web messages.}
+      \resumeItem{Integrated Google Gemini API to analyze message context and programmatically dispatch automated, context-aware responses.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {AI-Powered Micro Habit Tracker \normalfont{\href{https://github.com/Aadi-code186/AI-Powered-Micro-Habit-Tracker}{\color{linkcolor}[GitHub]}}}{Python, React, Scikit-learn, Pandas, Gemini API}{2024 -- 2025}
+    \resumeItemListStart
+      \resumeItem{Engineered a web application calculating streak analytics and habit adherence metrics from user activity logs.}
+      \resumeItem{Built predictive analytics pipelines using Python, Pandas, and Scikit-learn to model completion probabilities over time.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {Website Dwell Time Extension \normalfont{\href{https://github.com/Aadi-code186/Website-Time-Tracker}{\color{linkcolor}[GitHub]}}}{JavaScript, TypeScript, Chrome Extension API}{Apr 2025}
+    \resumeItemListStart
+      \resumeItem{Built a cross-browser extension using JavaScript and Chrome APIs to monitor domain-level dwell time in real time with background listeners.}
+      \resumeItem{Rendered real-time activity dashboards using Chart.js to visualize daily browsing habits and highlight focus bottlenecks.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {Vani -- Voice-Activated AI Assistant \normalfont{\href{https://github.com/Aadi-code186/Vani-your-own-personal-assistant}{\color{linkcolor}[GitHub]}}}{Python, Gemini API, SpeechRecognition, NLP}{2024 -- 2025}
+    \resumeItemListStart
+      \resumeItem{Developed a Python voice assistant parsing spoken commands into execution workflows using SpeechRecognition and NLP primitives.}
+      \resumeItem{Integrated Google Gemini API alongside weather and news REST APIs to synthesize and render real-time responses to natural language queries.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+% ==========================================
+% EDUCATION
+% ==========================================
+\section*{EDUCATION}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Bachelor of Science in Software Engineering}{Mar 2026 -- Present}
+    {University of Europe for Applied Sciences}{Potsdam / Berlin, Germany}
+  \resumeSubheading
+    {Pathway Programme in Computer Science (Studienkolleg)}{Apr 2025 -- Jan 2026}
+    {IU International University of Applied Sciences}{Berlin, Germany}
+\resumeSubHeadingListEnd
+
+% ==========================================
+% CERTIFICATIONS
+% ==========================================
+\section*{CERTIFICATIONS}
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \item \small{
+    \textbf{CS50x} (Harvard) \quad $\cdot$ \quad
+    \textbf{CS50P} (Harvard) \quad $\cdot$ \quad
+    \textbf{Technology Job Simulation} (Deloitte) \quad $\cdot$ \quad
+    \textbf{TestAS} (g.a.s.t.) \quad $\cdot$ \quad
+    \textbf{Blockchain Basics} (Cyfrin)
+  }
+\end{itemize}
+
+\end{document}
