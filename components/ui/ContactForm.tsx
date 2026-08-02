@@ -1,26 +1,53 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Send, CheckCircle2 } from 'lucide-react';
+import { Send, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 
 export function ContactForm() {
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.email || !formData.message) return;
 
-    // Open user's email client pre-filled to send directly to adityagermany186@gmail.com
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name || 'Visitor'}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nSender Email: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:adityagermany186@gmail.com?subject=${subject}&body=${body}`;
+    setLoading(true);
+    setError('');
 
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-    setFormData({ name: '', email: '', message: '' });
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '6685e430-50d5-4cca-bd31-d3aabbbb103b',
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Portfolio Inquiry from ${formData.name}`,
+          from_name: formData.name,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        setError('Failed to send message. Please try emailing directly.');
+      }
+    } catch (err) {
+      console.error('Web3Forms Error:', err);
+      setError('An error occurred. Please send a direct email.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -67,14 +94,27 @@ export function ContactForm() {
         />
       </div>
 
+      {error && (
+        <div className="flex items-center gap-2 text-xs font-mono text-red-600 bg-red-50 border border-red-200 p-3 rounded-xl">
+          <AlertCircle className="w-4 h-4 shrink-0" />
+          <span>{error}</span>
+        </div>
+      )}
+
       <button
         type="submit"
-        className="btn-primary w-full py-4 px-6 text-sm flex items-center justify-center gap-2 font-medium uppercase tracking-wider"
+        disabled={loading}
+        className="btn-primary w-full py-4 px-6 text-sm flex items-center justify-center gap-2 font-medium uppercase tracking-wider disabled:opacity-60 transition-opacity"
       >
-        {submitted ? (
+        {loading ? (
+          <>
+            <Loader2 className="w-4 h-4 text-[#EFE9E1] animate-spin" />
+            <span>Sending Message...</span>
+          </>
+        ) : submitted ? (
           <>
             <CheckCircle2 className="w-4 h-4 text-[#EFE9E1]" />
-            <span>Opening Email Client...</span>
+            <span>Message Sent Successfully!</span>
           </>
         ) : (
           <>
